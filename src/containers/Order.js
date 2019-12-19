@@ -26,14 +26,15 @@ class Order extends PureComponent {
         message: "Primary message to display",
         iconUrl: "/icon.png"
       }, function(data) {
-        // alert(data); 123
+        // alert(data);
     });
 }
     render() {
         const { orderData } = this.state;
+        const { localizationConfig } = this.props;
         return (
             <div className={'my-extension'}>
-                {orderData && <OrderList OrderData={orderData} />}
+                {orderData && <OrderList OrderData={orderData} localizationConfig={localizationConfig}/>}
             </div>
         )
     }
