@@ -26,7 +26,7 @@ class Order extends PureComponent {
         message: "Primary message to display",
         iconUrl: "/icon.png"
       }, function(data) {
-        // alert(data);
+        // alert(data); 123
     });
 }
     render() {
