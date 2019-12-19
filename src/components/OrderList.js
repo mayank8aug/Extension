@@ -2,30 +2,31 @@ import React from 'react';
 import './Items.scss';
 const OrderList = props => {
     const { OrderData } = props;
+    const modifyData = {'ORDER_PLACED' : 'ORDER PLACED'}
     return (
-        <div classname="">
+        <div className="order-section">
+            <div className="card-heading">Your past orders</div>
             {OrderData.map((order, index) => {
+                const { trackingDetails } = order;
                 return (
-                    <div className="order-box" key={order.id}>
-                        <div className="order-items">
-                            {
-                                order.items.map(item => {
-                                    return (<React.Fragment key={item.id}>
-                                        <div className="display-flex item" key={item.id}>
-                                            <div style={{ width: '40%' }}><img src={item.thumbnail} width="162" height="76" alt={item.name} /></div>
-                                            <div style={{ width: '60%' }} className="display-flex flex-direction-column info">
-                                                <span>Brand : {item.brandName}</span>
-                                                {Boolean(item.modelName) && <span>Model : {item.modelName}</span>}
-                                                <span>{item.name}</span>
-                                                <span>Product ID : {item.productId}</span>
-                                                {item.sellerLabel && item.sellerLabel !== '' && <span>{item.sellerLabel}</span>}
+                    <div className="order-items" key={order.id}>
+                        {
+                            order.items.map(item => {
+                                return (<React.Fragment key={item.id}>
+                                    <div className="display-flex item" key={item.id}>
+                                        <div className="image-container">
+                                            <img src={item.thumbnail} alt={item.name} /></div>
+                                        <div className="display-flex flex-direction-column">
+                                            <div className="margin-b5">Brand : {item.brandName}</div>
+                                            <div className="display-flex fs12 text-gray flex-direction-column">
+                                                <div className="margin-r10">{modifyData[trackingDetails[0].status]}</div>
+                                                {trackingDetails[0].status !== 'DELIVERED' && <div className="">Expected Delivery date <span className="bold">{trackingDetails[0].details && trackingDetails[0].details[0].time}</span></div>}
                                             </div>
                                         </div>
-                                    </React.Fragment>);
-                                })
-                            }
-                        </div>
-
+                                    </div>
+                                </React.Fragment>);
+                            })
+                        }
                     </div>
                 );
             })
