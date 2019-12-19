@@ -20,14 +20,14 @@ class Order extends PureComponent {
       const orderData = res.data.result && res.data.result.orders;
       this.setState({ orderData });
     });
-    let notification = showNotification('', {
+    /* let notification = showNotification('', {
         type: "basic",
         title: "Primary Title",
         message: "Primary message to display",
         iconUrl: "/icon.png"
       }, function(data) {
         // alert(data);
-    });
+    }); */
 }
     render() {
         const { orderData } = this.state;
