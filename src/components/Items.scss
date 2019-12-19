@@ -1,0 +1,26 @@
+.order-items {
+    .item {
+        margin-top: 10px;
+        padding: 10px 0px;
+        border-top: 1px solid #999;
+
+        .info {
+            padding-top: 12px;
+            padding: 2px 0 0 0;
+            overflow: hidden;
+
+            span {
+                margin: 3px 0;
+                color: #9f9f9f;
+                font-size: 13px;
+            }
+        }
+    }
+    .return-btn {
+        background: transparent;
+        border: 1px solid #ddd;
+        color: #ddd;
+        padding: 6px;
+        border: 1px solid #999;
+    }
+}

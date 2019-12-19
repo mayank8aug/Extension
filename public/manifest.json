@@ -1,0 +1,27 @@
+{
+  "name": "Lenskart Chrome Extension",
+  "version": "1.0.0",
+  "description": "Lenskart Chrome Extension",
+  "author": "Nishant Parashar, Mayank Kumar",
+  "icons": { "128": "icon.png" },
+  "permissions": [
+    "tabs",
+    "browsingData",
+    "webRequest",
+    "cookies",
+    "*://*.lenskart.com/",
+    "notifications"
+  ],
+  "content_security_policy": "script-src 'self' 'sha256-JuYOjb4Jv21fHDsPhjHTRd2F4HP1fqQ+9rUwPlTG8Ws='; object-src 'self'",
+  "browser_action": {
+      "default_icon": "icon.png",
+      "default_title": "Lenskart!",
+      "default_popup": "index.html"
+  },
+  "web_accessible_resources": [
+    "injected.js",
+    "index.html",
+    "icon.png"
+    ],
+  "manifest_version": 2
+}
