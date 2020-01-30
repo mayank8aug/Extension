@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import axios from 'axios';
 import Order from './containers/Order';
 import Auth from './containers/Auth';
+import { showNotification } from './helper';
 import socketIOClient from "socket.io-client";
 import './style.css';
 
@@ -20,8 +21,18 @@ class App extends Component {
     const socket = socketIOClient('http://localhost:9090');
     socket.on("connect", () => {
       socket.emit('storeClientInfo', { customId: 'mayank' });
-  });
+    });
     socket.on("FromAPI", data => console.log(data));
+    socket.on('flashActive', data => {
+      showNotification('', {
+        type: "basic",
+        title: "Flash Sale",
+        message: "Flash Sale Active",
+        iconUrl: "/icon.png"
+      }, function (data) {
+        // alert(data);
+      });
+    });
     let langCode;
     try {
       langCode = navigator.language.split('-')[0];
