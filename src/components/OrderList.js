@@ -3,8 +3,8 @@ import './Items.scss';
 const OrderList = props => {
     const { OrderData, localizationConfig = {} } = props;
     return (
-        <div classname="">
-            {OrderData.map((order, index) => {
+        <div>
+            {OrderData.map(order => {
                 return (
                     <div className="order-box" key={order.id}>
                         <div className="order-items">

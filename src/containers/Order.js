@@ -8,33 +8,37 @@ class Order extends PureComponent {
     constructor(props) {
         super(props);
         this.state = {
-            orderData: ''
+            orderData: null,
+            loader: false
         };
     }
-  componentDidMount() {
-    const sessionToken = '1c9119a9-d999-4f71-a00a-4fa0b7b3530e'; { /* getCookies("http://www.lenskart.com", "frontend", function(id) {
-        alert(id);
-    }); */ }
-    axios.get(`https://api.lenskart.com/v3/orders?page=0&page-size=2`, { headers: { 'x-api-client': 'desktop', 'x-session-token': sessionToken } })
-    .then(res => {
-      const orderData = res.data.result && res.data.result.orders;
-      this.setState({ orderData });
-    });
-    /* let notification = showNotification('', {
-        type: "basic",
-        title: "Primary Title",
-        message: "Primary message to display",
-        iconUrl: "/icon.png"
-      }, function(data) {
-        // alert(data);
-    }); */
-}
+    componentDidMount() {
+        this.setState({ loader: true });
+        axios.get(`https://api.lenskart.com/v3/orders?page=0&page-size=2`, { headers: { 'x-api-client': 'desktop', 'x-session-token': this.props.sessionToken } })
+            .then(res => {
+                const orderData = res.data.result && res.data.result.orders;
+                this.setState({ orderData, loader: false });
+            }).catch(() => {
+                this.setState({ orderData: null, loader: false });
+            });
+        /* let notification = showNotification('', {
+            type: "basic",
+            title: "Primary Title",
+            message: "Primary message to display",
+            iconUrl: "/icon.png"
+          }, function(data) {
+            // alert(data);
+        }); */
+    }
     render() {
-        const { orderData } = this.state;
+        const { orderData, loader } = this.state;
         const { localizationConfig } = this.props;
         return (
             <div className={'my-extension'}>
-                {orderData && <OrderList OrderData={orderData} localizationConfig={localizationConfig}/>}
+                {loader && <div className="loader">
+                    <img src="https://static.lenskart.com/media/desktop/img/loader.gif" alt="ldr" />
+                </div>}
+                {orderData && <OrderList OrderData={orderData} localizationConfig={localizationConfig} />}
             </div>
         )
     }
