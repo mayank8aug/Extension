@@ -16,7 +16,7 @@ chrome.tabs.query({
     active: true,
     currentWindow: true
 }, function(tabs) {
-    var tabURL = tabs[0].url;
+    var tabURL = tabs.length && tabs[0].url;
     console.log(tabURL);
 });
  chrome.tabs.getCurrent(tab => {
@@ -29,11 +29,11 @@ chrome.tabs.query({
       code: 'document.body.style.backgroundColor="red"'
     });
   });
-let orderStatus = '';
+let itemStatus = {};
 
 function getOrderStatus() {
-    const sessionToken = '82725d0d-c4c3-4e2e-89dc-c0fc5c579f5f';
-    fetch(`https://api.lenskart.com/v3/orders?page=0&page-size=2`, {
+    const sessionToken = 'c5d4056f-ee0b-405a-8939-d8c1d937658d';
+    fetch(`https://api.lenskart.com/v3/orders?page=0&page-size=1`, {
             headers: {
                 'x-api-client': 'desktop',
                 'x-session-token': sessionToken
@@ -42,19 +42,33 @@ function getOrderStatus() {
         .then(resp => {
             resp.json().then(res => {
                 const orderData = res.result && res.result.orders;
-                let currentOrderStatus = orderData[0] && orderData[0].trackingDetails[0] && orderData[0].trackingDetails[0].status;
-                if (orderStatus !== currentOrderStatus) {
+                const { items } = orderData[0];
+                const statusUpdated = [];
+                let item;
+                let status;
+                for (let i = 0, len = items.length; i < len; i++) {
+                    item = items[i];
+                    status = item.status.status.replace('_', ' ');
+                    if (itemStatus[item.id] && itemStatus[item.id] !== status) {
+                        statusUpdated.push({
+                            title: `Item Id: ${item.id}`,
+                            message: `Current status: ${status}`
+                        });
+                        itemStatus[item.id] = status;
+                    }
+                }
+                if (statusUpdated.length) {
                     options = {
-                        type: "basic",
+                        type: "list",
                         title: "Your Order Status",
-                        message: `Your order is ${currentOrderStatus}`,
+                        message: "Your order has been updated",
+                        items: statusUpdated,
                         iconUrl: "/icon.png"
                     };
                     chrome.notifications.create(id = '', options, function(data) {
                         console.log(data);
                     });
                 }
-                orderStatus = currentOrderStatus;
             })
         })
 }

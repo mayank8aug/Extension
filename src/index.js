@@ -53,7 +53,7 @@ class App extends Component {
       .then(res => {
         this.setState({ localizationConfig: res.data });
       });
-    this.sessionToken = '82725d0d-c4c3-4e2e-89dc-c0fc5c579f5f'; { /* getCookies("http://www.lenskart.com", "frontend", function(id) {
+    this.sessionToken = 'c5d4056f-ee0b-405a-8939-d8c1d937658d'; { /* getCookies("http://www.lenskart.com", "frontend", function(id) {
         alert(id);
     }); */ }
     this.setState({ loader: true });
