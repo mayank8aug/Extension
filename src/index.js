@@ -19,6 +19,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+<<<<<<< HEAD
     // const socket = socketIOClient('http://192.168.4.86:9090');
     // socket.on("connect", () => {
     //   socket.emit('storeClientInfo', { customId: 'mayank' });
@@ -43,6 +44,24 @@ class App extends Component {
       //   // alert(data);
       // });
     // });
+=======
+    const socket = socketIOClient('http://localhost:9090');
+    socket.on("connect", () => {
+      socket.emit('storeClientInfo', { customId: 'mayank' });
+    });
+    socket.on("FromAPI", data => console.log(data));
+    socket.on('flashActive', data => {
+      console.log(data);
+      showNotification('', {
+        type: "basic",
+        title: "Flash Sale",
+        message: "Flash Sale Active",
+        iconUrl: "/icon.png"
+      }, function (data) {
+        // alert(data);
+      });
+    });
+>>>>>>> 5cd76633558d00b2fc29d002821b49511cb1dc18
     let langCode;
     try {
       langCode = navigator.language.split('-')[0];
