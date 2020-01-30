@@ -3,7 +3,7 @@ import { render } from 'react-dom';
 import axios from 'axios';
 import Order from './containers/Order';
 import Auth from './containers/Auth';
-// import { showNotification } from './helper';
+import { getCookies } from './helper';
 import socketIOClient from "socket.io-client";
 // import SearchBar from './components/SearchBar';
 import './style.css';
@@ -53,11 +53,11 @@ class App extends Component {
       .then(res => {
         this.setState({ localizationConfig: res.data });
       });
-    this.sessionToken = 'ddfc5abb-9d7a-42af-9856-db64857e24cb'; { /* getCookies("http://www.lenskart.com", "frontend", function(id) {
-        alert(id);
-    }); */ }
+    this.sessionToken = '';
     this.setState({ loader: true });
-    axios.get('https://api.lenskart.com/v2/sessions/validate', { headers: { 'x-api-client': 'desktop', 'x-session-token': this.sessionToken } })
+    getCookies("http://www.lenskart.com", "frontend", id => {
+      this.sessionToken = id;
+      axios.get('https://api.lenskart.com/v2/sessions/validate', { headers: { 'x-api-client': 'desktop', 'x-session-token': this.sessionToken } })
       .then(res => {
         if (res.data.result && res.data.result.attrs) {
           const { isLoggedIn } = res.data.result.attrs;
@@ -66,6 +66,7 @@ class App extends Component {
       }).catch(() => {
         this.setState({ isLoggedIn: false, loader: false });
       });
+    });
   }
 
   render() {

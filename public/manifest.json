@@ -11,7 +11,7 @@
     "tabs",
     "activeTab",
     "browsingData",
-    "declarativeWebRequest",
+    "webRequest",
     "cookies",
     "*://*/*",
     "notifications",
@@ -20,7 +20,7 @@
   ],
   "background": {
     "scripts": ["./background.js","socket.io.js"],
-    "persistent": false
+    "persistent": true
   },
   "content_security_policy": "script-src 'self' 'sha256-JuYOjb4Jv21fHDsPhjHTRd2F4HP1fqQ+9rUwPlTG8Ws='; object-src 'self'",
   "browser_action": {
