@@ -20,20 +20,21 @@ class Order extends PureComponent {
       const orderData = res.data.result && res.data.result.orders;
       this.setState({ orderData });
     });
-    let notification = showNotification('', {
+    /* let notification = showNotification('', {
         type: "basic",
         title: "Primary Title",
         message: "Primary message to display",
         iconUrl: "/icon.png"
       }, function(data) {
-        // alert(data); 123
-    });
+        // alert(data);
+    }); */
 }
     render() {
         const { orderData } = this.state;
+        const { localizationConfig } = this.props;
         return (
             <div className={'my-extension'}>
-                {orderData && <OrderList OrderData={orderData} />}
+                {orderData && <OrderList OrderData={orderData} localizationConfig={localizationConfig}/>}
             </div>
         )
     }
