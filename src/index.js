@@ -3,6 +3,7 @@ import { render } from 'react-dom';
 import axios from 'axios';
 import Order from './containers/Order';
 import Auth from './containers/Auth';
+import socketIOClient from "socket.io-client";
 import './style.css';
 
 class App extends Component {
@@ -16,6 +17,11 @@ class App extends Component {
   }
 
   componentDidMount() {
+    const socket = socketIOClient('http://localhost:9090');
+    socket.on("connect", () => {
+      socket.emit('storeClientInfo', { customId: 'mayank' });
+  });
+    socket.on("FromAPI", data => console.log(data));
     let langCode;
     try {
       langCode = navigator.language.split('-')[0];
