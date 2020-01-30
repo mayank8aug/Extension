@@ -2,6 +2,7 @@
 chrome.runtime.onInstalled.addListener(() => {
     console.log('onInstalled...');
     getOrderStatus();
+    getFlashSale();
     // create alarm after extension is installed / upgraded
     chrome.alarms.create('getOrderStatus', {
         periodInMinutes: 1
@@ -45,7 +46,7 @@ function getOrderStatus() {
                 if (orderStatus !== currentOrderStatus) {
                     options = {
                         type: "basic",
-                        title: "Lenskart Order Status",
+                        title: "Your Order Status",
                         message: `Your order is ${currentOrderStatus}`,
                         iconUrl: "/icon.png"
                     };
@@ -56,4 +57,23 @@ function getOrderStatus() {
                 orderStatus = currentOrderStatus;
             })
         })
+}
+function getFlashSale() {
+    // console.log('installed flash');
+    const socket = io.connect('http://192.168.4.86:9090');
+    socket.on("connect", () => {
+      // socket.emit('storeClientInfo', { customId: 'mayank' });
+    });
+    // socket.on("FromAPI", data => console.log(data));
+    socket.on('flashActive', data => {
+      chrome.notifications.create('', {
+          type: "basic",
+          title: "Flash Sale",
+          message: "Hurry!! Flash Sale is Active Now",
+          iconUrl: "/icon.png"
+        
+      }, function(data) {
+        console.log(data);
+      });
+    });
 }
