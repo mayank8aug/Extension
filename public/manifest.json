@@ -11,15 +11,16 @@
     "tabs",
     "activeTab",
     "browsingData",
-    "webRequest",
+    "declarativeWebRequest",
     "cookies",
     "*://*/*",
     "notifications",
-    "alarms"
+    "alarms",
+    "storage"
   ],
   "background": {
     "scripts": ["./background.js","socket.io.js"],
-    "persistent": true
+    "persistent": false
   },
   "content_security_policy": "script-src 'self' 'sha256-JuYOjb4Jv21fHDsPhjHTRd2F4HP1fqQ+9rUwPlTG8Ws='; object-src 'self'",
   "browser_action": {

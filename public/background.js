@@ -1,7 +1,6 @@
 // import { showNotification } from './../src/helper';
 chrome.runtime.onInstalled.addListener(() => {
     console.log('onInstalled...');
-    getOrderStatus();
     getFlashSale();
     // create alarm after extension is installed / upgraded
     chrome.alarms.create('getOrderStatus', {
@@ -19,20 +18,10 @@ chrome.tabs.query({
     var tabURL = tabs[0].url;
     console.log(tabURL);
 });
- chrome.tabs.getCurrent(tab => {
-    console.log(tab);
- });
- chrome.browserAction.onClicked.addListener(function(tab) {
-    // No tabs or host permissions needed!
-    console.log('Turning ' + tab.url + ' red!');
-    chrome.tabs.executeScript({
-      code: 'document.body.style.backgroundColor="red"'
-    });
-  });
 let orderStatus = '';
 
 function getOrderStatus() {
-    const sessionToken = '82725d0d-c4c3-4e2e-89dc-c0fc5c579f5f';
+    const sessionToken = 'ddfc5abb-9d7a-42af-9856-db64857e24cb';
     fetch(`https://api.lenskart.com/v3/orders?page=0&page-size=2`, {
             headers: {
                 'x-api-client': 'desktop',
@@ -70,10 +59,22 @@ function getFlashSale() {
           type: "basic",
           title: "Flash Sale",
           message: "Hurry!! Flash Sale is Active Now",
-          iconUrl: "/icon.png"
+          iconUrl: "/icon.png",
+          eventTime: '5000'
         
       }, function(data) {
         console.log(data);
       });
     });
 }
+chrome.runtime.onInstalled.addListener(function() {
+    chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
+      chrome.declarativeContent.onPageChanged.addRules([{
+        conditions: [new chrome.declarativeContent.PageStateMatcher({
+          pageUrl: {hostEquals: 'developer.chrome.com'},
+        })
+        ],
+            actions: [new chrome.declarativeContent.ShowPageAction()]
+      }]);
+    });
+  });
