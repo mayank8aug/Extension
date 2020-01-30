@@ -24,6 +24,7 @@ class App extends Component {
     });
     socket.on("FromAPI", data => console.log(data));
     socket.on('flashActive', data => {
+      console.log(data);
       showNotification('', {
         type: "basic",
         title: "Flash Sale",
