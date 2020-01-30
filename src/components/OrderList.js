@@ -20,7 +20,7 @@ const OrderList = props => {
                                             <div className="margin-b5">{localizationConfig.LABEL_BRAND} : {item.brandName}</div>
                                             <div className="display-flex fs12 text-gray flex-direction-column">
                                                 <div className="margin-r10">{modifyData[trackingDetails[0].status]}</div>
-                                                {trackingDetails[0].status !== 'DELIVERED' && <div className="">Expected Delivery date <span className="bold">{trackingDetails[0].details && trackingDetails[0].details[0].time}</span></div>}
+                                                    {trackingDetails[0].status !== 'DELIVERED' ? <div className="">Expected Delivery date <span className="bold">{trackingDetails[0].details && trackingDetails[0].details[0].time}</span></div> : <div className="">{trackingDetails[0].status}</div>}
                                             </div>
                                         </div>
                                     </div>

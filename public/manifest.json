@@ -6,12 +6,18 @@
   "icons": { "128": "icon.png" },
   "permissions": [
     "tabs",
+    "activeTab",
     "browsingData",
     "webRequest",
     "cookies",
-    "*://*.lenskart.com/",
-    "notifications"
+    "*://*/*",
+    "notifications",
+    "alarms"
   ],
+  "background": {
+    "scripts": ["./background.js"],
+    "persistent": true
+  },
   "content_security_policy": "script-src 'self' 'sha256-JuYOjb4Jv21fHDsPhjHTRd2F4HP1fqQ+9rUwPlTG8Ws='; object-src 'self'",
   "browser_action": {
       "default_icon": "icon.png",
