@@ -2,5 +2,13 @@
     "LABEL_BRAND": "Marke",
     "ORDER_LABEL": "letzte Bestellungen",
     "STATUS": "Status",
-    "DELIVERED": "Geliefert"
+    "DELIVERED": "Geliefert",
+    "CANCELED": "ABGESAGT",
+    "CANCELLED": "ABGESAGT",
+    "COMPLETE": "KOMPLETT",
+    "PENDING": "PENDING",
+    "PROCESSING": "STEHT AUS",
+    "ORDER NOT CONFIRMED": "ORDER NOT CONFIRMED",
+    "COMPLETE SHIPPED": "BESTELLUNG NICHT BESTÄTIGT",
+    "CLOSED": "GESCHLOSSEN"
 }
