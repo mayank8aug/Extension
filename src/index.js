@@ -4,7 +4,6 @@ import axios from 'axios';
 import Order from './containers/Order';
 import Auth from './containers/Auth';
 import { getCookies } from './helper';
-import socketIOClient from "socket.io-client";
 // import SearchBar from './components/SearchBar';
 import './style.scss';
 /*global chrome*/

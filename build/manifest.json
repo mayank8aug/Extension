@@ -15,10 +15,14 @@
     "cookies",
     "*://*/*",
     "notifications",
-    "alarms"
+    "alarms",
+    "storage"
   ],
   "background": {
-    "scripts": ["./background.js","socket.io.js"],
+    "scripts": [
+      "./background.js",
+      "socket.io.js"
+    ],
     "persistent": true
   },
   "content_security_policy": "script-src 'self' 'sha256-JuYOjb4Jv21fHDsPhjHTRd2F4HP1fqQ+9rUwPlTG8Ws='; object-src 'self'",
@@ -27,9 +31,21 @@
     "default_title": "Lenskart!",
     "default_popup": "index.html"
   },
+  "content_scripts": [
+    {
+      "js": [
+        "contentscript.js"
+      ],
+      "matches": [
+        "https://*/*bausch*"
+      ],
+      "exclude_matches": [
+        "https://www.lenskart.com/*"
+      ],
+      "all_frames": true
+    }
+  ],
   "web_accessible_resources": [
-    "injected.js",
-    "index.html",
-    "icon.png"
+    "frame.html"
   ]
 }
