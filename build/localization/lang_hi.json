@@ -1,3 +1,6 @@
 {
-    "LABEL_BRAND": "ब्रांड"
+    "LABEL_BRAND": "ब्रांड",
+    "ORDER_LABEL": "हाल के आदेश",
+    "STATUS": "स्थिति",
+    "DELIVERED": "प्रदत्त"
 }

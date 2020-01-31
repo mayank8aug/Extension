@@ -1,3 +1,6 @@
 {
-    "LABEL_BRAND": "Marke"
+    "LABEL_BRAND": "Marke",
+    "ORDER_LABEL": "letzte Bestellungen",
+    "STATUS": "Status",
+    "DELIVERED": "Geliefert"
 }

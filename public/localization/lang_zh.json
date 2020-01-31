@@ -1,3 +1,6 @@
 {
-    "LABEL_BRAND": "牌"
+    "LABEL_BRAND": "牌",
+    "ORDER_LABEL": "最近的订单",
+    "STATUS": "状态",
+    "DELIVERED": "已交付"
 }

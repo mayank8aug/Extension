@@ -1,3 +1,5 @@
 {
-    "LABEL_BRAND": "Brand"
+    "LABEL_BRAND": "Brand",
+    "ORDER_LABEL": "Recent Orders",
+    "STATUS": "Status"
 }
