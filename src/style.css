@@ -13,10 +13,10 @@ body {
 .lens-logo {
   height: 60px;
   display: block;
-  > img {
-    height: 100%;
-    width: 100%;
-  }
+}
+.lens-logo > img {
+  height: 100%;
+  width: 100%;
 }
 .main-container {
   margin: 0 20px;

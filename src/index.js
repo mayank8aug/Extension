@@ -5,7 +5,7 @@ import Order from './containers/Order';
 import Auth from './containers/Auth';
 import { getCookies } from './helper';
 // import SearchBar from './components/SearchBar';
-import './style.scss';
+import './style.css';
 /*global chrome*/
 class App extends Component {
   constructor() {
