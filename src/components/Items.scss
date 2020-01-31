@@ -1,4 +1,7 @@
-.order-section {
+.order-items {
+    margin-bottom: 20px;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
     transform: rotateY(0);
     z-index: 2;
     // background-color: #dadada;
@@ -6,8 +9,9 @@
     transition: .6s;
     transform-style: preserve-3d;
     box-shadow: 0 1px 6px rgba(0,0,0,.3);
+}
+.order-section {
     .card-heading {
-        border-bottom: 2px solid #dadada;
         padding: 10px;
     }
     .image-container {
@@ -24,7 +28,6 @@
         // box-shadow: 0 1px 6px rgba(0,0,0,.3);
         align-items: center;
         // background-color: #fff;
-        border-bottom: 1px solid #dadada;
     }
 }
 .display-flex {

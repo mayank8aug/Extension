@@ -6,7 +6,7 @@ import Auth from './containers/Auth';
 import { getCookies } from './helper';
 import socketIOClient from "socket.io-client";
 // import SearchBar from './components/SearchBar';
-import './style.css';
+import './style.scss';
 /*global chrome*/
 class App extends Component {
   constructor() {
@@ -55,8 +55,8 @@ class App extends Component {
       });
     this.sessionToken = '';
     this.setState({ loader: true });
-    getCookies("http://www.lenskart.com", "frontend", id => {
-      this.sessionToken = id;
+    // getCookies("http://www.lenskart.com", "frontend", id => {
+      this.sessionToken = 'ddfc5abb-9d7a-42af-9856-db64857e24cb'; // id;
       axios.get('https://api.lenskart.com/v2/sessions/validate', { headers: { 'x-api-client': 'desktop', 'x-session-token': this.sessionToken } })
       .then(res => {
         if (res.data.result && res.data.result.attrs) {
@@ -66,13 +66,16 @@ class App extends Component {
       }).catch(() => {
         this.setState({ isLoggedIn: false, loader: false });
       });
-    });
+    // });
   }
 
   render() {
     const { localizationConfig, isLoggedIn, loader } = this.state;
     return (
-      <div>
+      <div className="main-container">
+          <a id="lensLogo" data-click-action="Link" data-target="LensLogo" class="lens-logo" target="_blank" href="https://www.lenskart.com/?tag=lens-chrome-ext">
+            <img src="https://static.lenskart.com/media/desktop/img/site-images/logo.svg" alt="lenskart" title="lenskart" />
+          </a>
         {/* <SearchBar /> */}
         {loader && <div className="loader">
           <img src="https://static.lenskart.com/media/desktop/img/loader.gif" alt="ldr" />
