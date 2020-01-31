@@ -2,7 +2,7 @@ import React from 'react';
 import './Items.scss';
 const OrderList = props => {
     const { OrderData, localizationConfig = {} } = props;
-    const { LABEL_BRAND, STATUS, ORDER_LABEL } = localizationConfig;
+    const { LABEL_BRAND, STATUS, ORDER_LABEL, DELIVERY_DATE } = localizationConfig;
     return (
         <div className="order-section">
             <div className="card-heading">{ORDER_LABEL}</div>
@@ -23,7 +23,7 @@ const OrderList = props => {
                                             <div className="margin-b5">{LABEL_BRAND} : {item.brandName}</div>
                                             <div className="display-flex fs12 text-gray flex-direction-column">
                                                 {statusKey !== 'DELIVERED' && <div className="margin-r10">{statusLabel}</div>}
-                                                {statusKey !== 'DELIVERED' ? <div className="">Expected Delivery date <span className="bold">{new Date(deliveryDate).toLocaleDateString()}</span></div> : <div className="">{STATUS}: {statusLabel}</div>}
+                                                {statusKey !== 'DELIVERED' ? <div className="">{DELIVERY_DATE} <span className="bold">{new Date(deliveryDate).toLocaleDateString()}</span></div> : <div className="">{STATUS}: {statusLabel}</div>}
                                             </div>
                                         </div>
                                     </div>

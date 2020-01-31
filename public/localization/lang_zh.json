@@ -10,5 +10,6 @@
     "PROCESSING": "处理方式",
     "ORDER NOT CONFIRMED": "订单未确认",
     "COMPLETE SHIPPED": "完整出货",
-    "CLOSED": "关闭"
+    "CLOSED": "关闭",
+    "DELIVERY_DATE": "预计交货日期"
 }
