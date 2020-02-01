@@ -54,9 +54,9 @@ class App extends Component {
       });
     this.sessionToken = '';
     this.setState({ loader: true });
-    // getCookies("http://www.lenskart.com", "frontend", id => {
-      this.sessionToken = 'ddfc5abb-9d7a-42af-9856-db64857e24cb'; // id;
-      axios.get('https://api.lenskart.com/v2/sessions/validate', { headers: { 'x-api-client': 'desktop', 'x-session-token': this.sessionToken } })
+    getCookies("http://www.lenskart.com", "frontend", id => {
+      this.sessionToken = id || 'ddfc5abb-9d7a-42af-9856-db64857e24cb'; // id;
+      axios.get('https://api.lenskart.com/v2/sessions/validate', { headers: { 'x-api-client': 'desktop', 'x-session-token': id } })
       .then(res => {
         if (res.data.result && res.data.result.attrs) {
           const { isLoggedIn } = res.data.result.attrs;
@@ -65,7 +65,7 @@ class App extends Component {
       }).catch(() => {
         this.setState({ isLoggedIn: false, loader: false });
       });
-    // });
+    });
   }
 
   render() {
