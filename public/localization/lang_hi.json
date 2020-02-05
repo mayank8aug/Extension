@@ -10,5 +10,6 @@
     "PROCESSING": "प्रसंस्करण",
     "ORDER NOT CONFIRMED": "आदेश की पुष्टि नहीं की",
     "COMPLETE SHIPPED": "पूरा जहाज",
-    "CLOSED": "बन्द"
+    "CLOSED": "बन्द",
+    "DELIVERY_DATE": "अपेक्षित वितरण की तारीख"
 }
