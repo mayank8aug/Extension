@@ -1,7 +1,7 @@
 {
-  "name": "Lenskart Chrome Extension",
+  "name": "Lenskart Extension",
   "version": "1.0.0",
-  "description": "Lenskart Chrome Extension",
+  "description": "Lenskart Extension",
   "author": "Nishant Parashar, Mayank Kumar",
   "icons": {
     "128": "icon.png"

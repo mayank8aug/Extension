@@ -7,8 +7,8 @@ if (!location.ancestorOrigins.contains(extensionOrigin)) {
     iframe.src = chrome.runtime.getURL('frame.html');
 
     // Some styles for a fancy sidebar
-    iframe.style.cssText = 'position: fixed;right: 0px;top: 9%;display: block;width: 300px;height: 320px;z-index: 1000;' +
-                           'border: 1px solid rgb(204, 204, 204);transform: rotateY(0);z-index: 100;backface-visibility: hidden;transition: .6s;transform-style: preserve-3d;box-shadow: 0 1px 6px rgba(0,0,0,.3);';
+    iframe.style.cssText = 'position: fixed;right: 0px;top: 9%;display: block;width: 300px;height: 320px;z-index: 100000;' +
+                           'border: 1px solid rgb(204, 204, 204);transform: rotateY(0);backface-visibility: hidden;transition: .6s;transform-style: preserve-3d;box-shadow: 0 1px 6px rgba(0,0,0,.3);';
     document.body.appendChild(iframe);
 //     document.getElementById("theButton").addEventListener("click",
 //     function() {

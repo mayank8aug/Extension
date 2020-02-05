@@ -3,7 +3,7 @@ chrome.runtime.onInstalled.addListener(() => {
     console.log('onInstalled...');
     getFlashSale();
     getOrderStatus();
-    getAllTabsUrl();
+    // getAllTabsUrl();
     // create alarm after extension is installed / upgraded
     chrome.alarms.create('getOrderStatus', {
         periodInMinutes: 1
@@ -56,10 +56,10 @@ function getOrderStatus() {
                         for (let i = 0, len = items.length; i < len; i++) {
                             item = items[i];
                             status = item.status.status.replace('_', ' ');
-                            if (itemStatus[item.id] && itemStatus[item.id] !== status) {
+                            if (itemStatus[item.id] !== status) {
                                 statusUpdated.push({
-                                    title: `Item Id: ${item.id}`,
-                                    message: `Current status: ${status}`
+                                    title: `Updated status for item ${item.id}`,
+                                    message: `${status}`
                                 });
                                 itemStatus[item.id] = status;
                             }
@@ -70,7 +70,8 @@ function getOrderStatus() {
                                 title: "Your Order Status",
                                 message: "Your order has been updated",
                                 items: statusUpdated,
-                                iconUrl: "/icon.png"
+                                iconUrl: "/icon.png",
+                                eventTime: 8000
                             };
                             chrome.notifications.create(id = '', options, function (data) {
                                 console.log(data);
@@ -88,7 +89,7 @@ chrome.notifications.onButtonClicked.addListener((notificationsId, buttonIndex) 
 
 function getFlashSale() {
     // console.log('installed flash');
-    const socket = io.connect('http://192.168.4.86:9090');
+    const socket = io.connect('http://192.168.5.116:9090');
     socket.on("connect", () => {
         // socket.emit('storeClientInfo', { customId: 'mayank' });
     });
@@ -97,9 +98,9 @@ function getFlashSale() {
         chrome.notifications.create('', {
             type: "basic",
             title: "Flash Sale",
-            message: "Hurry!! Flash Sale is Active Now",
+            message: "Get upto Rs.1000 off on Eyewear. Use Voucher code : RUSH",
             iconUrl: "/icon.png",
-            eventTime: '5000'
+            eventTime: 8000
 
         }, function (data) {
             console.log(data);
@@ -120,7 +121,7 @@ function getAllTabsUrl() {
 
     chrome.tabs.getSelected(null, function (tab) {
         tabUrl = tab.url;
-        console.log(`current: ${tabUrl}`);
+        // console.log(`current: ${tabUrl}`);
     });
 
     chrome.tabs.onUpdated.addListener(function (params) {});
