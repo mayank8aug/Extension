@@ -43,9 +43,22 @@
         "https://www.lenskart.com/*"
       ],
       "all_frames": true
+    },
+    {
+      "js": [
+        "contentscript_manyavar.js"
+      ],
+      "matches": [
+        "https://*/*manyavar*", "https://www.manyavar.com/"
+      ],
+      "exclude_matches": [
+        "https://www.lenskart.com/*"
+      ],
+      "all_frames": true
     }
   ],
   "web_accessible_resources": [
-    "frame.html"
+    "frame.html",
+    "manyavarframe.html"
   ]
 }
